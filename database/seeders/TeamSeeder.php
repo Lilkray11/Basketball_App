@@ -1,0 +1,49 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\Team;
+
+class TeamSeeder extends Seeder
+{
+    public function run()
+    {
+        $teams = [
+            ['name' => 'Atlanta Hawks', 'city' => 'Atlanta'],
+            ['name' => 'Boston Celtics', 'city' => 'Boston'],
+            ['name' => 'Brooklyn Nets', 'city' => 'Brooklyn'],
+            ['name' => 'Charlotte Hornets', 'city' => 'Charlotte'],
+            ['name' => 'Chicago Bulls', 'city' => 'Chicago'],
+            ['name' => 'Cleveland Cavaliers', 'city' => 'Cleveland'],
+            ['name' => 'Dallas Mavericks', 'city' => 'Dallas'],
+            ['name' => 'Denver Nuggets', 'city' => 'Denver'],
+            ['name' => 'Detroit Pistons', 'city' => 'Detroit'],
+            ['name' => 'Golden State Warriors', 'city' => 'San Francisco'],
+            ['name' => 'Houston Rockets', 'city' => 'Houston'],
+            ['name' => 'Indiana Pacers', 'city' => 'Indiana'],
+            ['name' => 'LA Clippers', 'city' => 'Los Angeles'],
+            ['name' => 'Los Angeles Lakers', 'city' => 'Los Angeles'],
+            ['name' => 'Memphis Grizzlies', 'city' => 'Memphis'],
+            ['name' => 'Miami Heat', 'city' => 'Miami'],
+            ['name' => 'Milwaukee Bucks', 'city' => 'Milwaukee'],
+            ['name' => 'Minnesota Timberwolves', 'city' => 'Minnesota'],
+            ['name' => 'New Orleans Pelicans', 'city' => 'New Orleans'],
+            ['name' => 'New York Knicks', 'city' => 'New York'],
+            ['name' => 'Oklahoma City Thunder', 'city' => 'Oklahoma City'],
+            ['name' => 'Orlando Magic', 'city' => 'Orlando'],
+            ['name' => 'Philadelphia 76ers', 'city' => 'Philadelphia'],
+            ['name' => 'Phoenix Suns', 'city' => 'Phoenix'],
+            ['name' => 'Portland Trail Blazers', 'city' => 'Portland'],
+            ['name' => 'Sacramento Kings', 'city' => 'Sacramento'],
+            ['name' => 'San Antonio Spurs', 'city' => 'San Antonio'],
+            ['name' => 'Toronto Raptors', 'city' => 'Toronto'],
+            ['name' => 'Utah Jazz', 'city' => 'Utah'],
+            ['name' => 'Washington Wizards', 'city' => 'Washington'],
+        ];
+
+        foreach ($teams as $team) {
+            Team::create($team);
+        }
+    }
+}
