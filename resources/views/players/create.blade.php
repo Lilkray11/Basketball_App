@@ -1,56 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basketball App</title>
+    <title>Add Player</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
 
-<div class="container mt-4">
+<nav class="navbar navbar-dark bg-black p-3">
+    <div class="container">
+        <a class="navbar-brand" href="/teams">Home</a>
+    </div>
+</nav>
 
-<h2>Add Player</h2>
+<div class="container mt-5">
 
-<form method="POST" action="/players">
-    @csrf
+    <h2 class="text-center mb-4">Add Player</h2>
 
-    <input name="name" class="form-control mb-2" placeholder="Name">
-    <input name="age" type="number" class="form-control mb-2" placeholder="Age">
-    <input name="position" class="form-control mb-2" placeholder="Position">
+    <div class="card bg-secondary p-4">
+        <form method="POST" action="/players">
+            @csrf
 
-    <select name="team_id" class="form-control mb-2">
-        @foreach($teams as $team)
-            <option value="{{ $team->id }}">{{ $team->name }}</option>
-        @endforeach
-    </select>
+            <input name="name" class="form-control mb-3" placeholder="Player Name">
 
-    <button class="btn btn-success">Add Player</button>
-</form>
+            <input name="age" type="number" class="form-control mb-3" placeholder="Age">
 
-<p id="message"></p>
+            <input name="position" class="form-control mb-3" placeholder="Position (e.g. PG, SG)">
 
-<script>
-document.getElementById('playerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+            <select name="team_id" class="form-control mb-3">
+                @foreach($teams as $team)
+                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                @endforeach
+            </select>
 
-    let formData = new FormData(this);
-
-    fetch('/players', {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
-        },
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('message').innerText = "Player added successfully!";
-    })
-    .catch(error => {
-        console.error(error);
-    });
-});
-</script>
+            <button class="btn btn-success w-100">Add Player</button>
+        </form>
+    </div>
 
 </div>
+
 </body>
 </html>

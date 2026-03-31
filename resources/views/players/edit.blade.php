@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Basketball App</title>
+    <title>Edit Player</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-dark text-white">
 
-<div class="container mt-4">
+<nav class="navbar navbar-dark bg-black p-3">
+    <div class="container">
+        <a class="navbar-brand" href="/teams">Home</a>
+    </div>
+</nav>
 
-<h1>Edit Player</h1>
+<div class="container mt-5">
 
-<form method="POST" action="/players/{{ $player->id }}">
-    @csrf
-    @method('PUT')
+    <h2 class="text-center mb-4">Edit Player</h2>
 
-    <input type="text" name="name" value="{{ $player->name }}"><br>
-    <input type="number" name="age" value="{{ $player->age }}"><br>
-    <input type="text" name="position" value="{{ $player->position }}"><br>
+    <div class="card bg-secondary p-4">
+        <form method="POST" action="/players/{{ $player->id }}">
+            @csrf
+            @method('PUT')
 
-    <select name="team_id">
-        @foreach($teams as $team)
-            <option value="{{ $team->id }}" 
-                {{ $team->id == $player->team_id ? 'selected' : '' }}>
-                {{ $team->name }}
-            </option>
-        @endforeach
-    </select><br>
+            <input name="name" class="form-control mb-3" value="{{ $player->name }}">
 
-    <button type="submit">Update Player</button>
-</form>
+            <input name="age" type="number" class="form-control mb-3" value="{{ $player->age }}">
+
+            <input name="position" class="form-control mb-3" value="{{ $player->position }}">
+
+            <select name="team_id" class="form-control mb-3">
+                @foreach($teams as $team)
+                    <option value="{{ $team->id }}" {{ $player->team_id == $team->id ? 'selected' : '' }}>
+                        {{ $team->name }}
+                    </option>
+                @endforeach
+            </select>
+
+            <button class="btn btn-warning w-100">Update Player</button>
+        </form>
+    </div>
 
 </div>
+
 </body>
 </html>
